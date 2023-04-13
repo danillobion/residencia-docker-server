@@ -3,6 +3,10 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 const router = Router();
 
+var cors = require('cors');
+
+router.use(cors());
+
 router.post("/produto/create", async (req, res) =>{
     const {nome, categoria, preco} = req.body
     const produto = await prisma.produto.create({
